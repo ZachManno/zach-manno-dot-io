@@ -48,16 +48,6 @@ resources:
                       "/*"
                   ]
                 ]
-#    DnsRecord:
-#      Type: "AWS::Route53::RecordSet"
-#      Properties:
-#        AliasTarget:
-#          DNSName: ${self:custom.aliasDNSName}
-#          HostedZoneId: ${self:custom.aliasHostedZoneId}
-#        HostedZoneName: ${self:custom.siteName}
-#        Name:
-#          Ref: StaticSite
-#        Type: 'A'
 
 plugins:
   - serverless-s3-sync
@@ -67,6 +57,3 @@ custom:
   s3Sync:
     - bucketName: ${self:custom.siteName}
       localDir: static
-  hostedZoneName: zachmanno.io
-  aliasHostedZoneId: Z03007993EJYMAQEAF1WP    # us-east-1
-  aliasDNSName: s3-website-us-east-1.amazonaws.com
