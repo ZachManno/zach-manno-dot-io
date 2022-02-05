@@ -1,0 +1,8 @@
+{
+  "devDependencies": {
+    "serverless-s3-sync": "^1.17.3"
+  },
+  "dependencies": {
+    "startbootstrap-blog-home": "^5.0.7"
+  }
+}
