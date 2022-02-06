@@ -22,10 +22,7 @@ resources:
     StaticSite:
       Type: AWS::S3::Bucket
       Properties:
-        AccessControl: PublicRead
         BucketName: ${self:custom.siteName}
-        WebsiteConfiguration:
-          IndexDocument: index.html
     StaticSiteS3BucketPolicy:
       Type: AWS::S3::BucketPolicy
       Properties:
@@ -33,32 +30,13 @@ resources:
           Ref: StaticSite
         PolicyDocument:
           Statement:
-            - Sid: PublicReadGetObject
-              Effect: Allow
-              Principal: "*"
-              Action:
-                - s3:GetObject
-              Resource:
-                Fn::Join: [
-                    "", [
-                      "arn:aws:s3:::",
-                    {
-                      "Ref": "StaticSite"
-                    },
-                      "/*"
-                  ]
-                ]
-            - Sid: GiveSESPermissionToWriteEmail
+            - Sid: CloudfrontGetObject
               Effect: Allow
               Principal:
-                Service:
-                  - 'ses.amazonaws.com'
+                CanonicalUser:
+                  - '603adfc78c0d71f9d01c7f20d02bb5ae06f6fbfaf41a889411aa84347af41159d975303e279482e469aff931ce721534'
               Action:
-                - s3:PutObject
-              Condition:
-                StringEquals:
-                  'aws:Referer':
-                    - '124690740858'
+                - s3:GetObject
               Resource:
                 Fn::Join: [
                     "", [
