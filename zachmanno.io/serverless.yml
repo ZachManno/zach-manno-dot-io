@@ -48,6 +48,27 @@ resources:
                       "/*"
                   ]
                 ]
+            - Sid: GiveSESPermissionToWriteEmail
+              Effect: Allow
+              Principal:
+                Service:
+                  - 'ses.amazonaws.com'
+              Action:
+                - s3:PutObject
+              Condition:
+                StringEquals:
+                  'aws:Referer':
+                    - '124690740858'
+              Resource:
+                Fn::Join: [
+                    "", [
+                      "arn:aws:s3:::",
+                    {
+                      "Ref": "StaticSite"
+                    },
+                      "/*"
+                  ]
+                ]
 
 plugins:
   - serverless-s3-sync

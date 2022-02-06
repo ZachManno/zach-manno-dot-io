@@ -1,0 +1,30 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Resources:
+  CloudfrontDistribution:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        Enabled: 'true'
+        DefaultRootObject: index.html
+        Aliases:
+          - zachmanno.io
+          - www.zachmanno.io
+        Origins:
+          - DomainName: zachmanno.io.s3.us-east-1.amazonaws.com
+            Id: s3BucketStaticOrigin
+            S3OriginConfig:
+              OriginAccessIdentity: origin-access-identity/cloudfront/E37WOTQ5YVSNWG
+        PriceClass: PriceClass_100
+        DefaultCacheBehavior:
+#          ViewerProtocolPolicy: allow-all
+          TargetOriginId: s3BucketStaticOrigin
+          ViewerProtocolPolicy: redirect-to-https
+#          TargetOriginId: s3BucketStaticOrigin
+          ForwardedValues:
+            QueryString: 'false'
+            Cookies:
+              Forward: none
+        ViewerCertificate:
+          AcmCertificateArn: arn:aws:acm:us-east-1:124690740858:certificate/391b030a-f7a6-4c2c-8a10-33879ac96e31
+          MinimumProtocolVersion: TLSv1.1_2016
+          SslSupportMethod: sni-only

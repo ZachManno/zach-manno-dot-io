@@ -29,3 +29,8 @@ cp -R dist/ ../static/ # Copy to static S3 folder
 cd ../
 serverless deploy
 ```
+
+# CDN Deploy
+`aws cloudformation create-stack --stack-name cloudfront-distribution-deploy --template-body file://cft/cft.yml`
+
+`aws cloudformation update-stack --stack-name cloudfront-distribution-deploy --template-body file://cft/cft.yml`
