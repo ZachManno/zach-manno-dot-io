@@ -34,3 +34,6 @@ serverless deploy
 `aws cloudformation create-stack --stack-name cloudfront-distribution-deploy --template-body file://cft/cft.yml`
 
 `aws cloudformation update-stack --stack-name cloudfront-distribution-deploy --template-body file://cft/cft.yml`
+
+# Resources
+Use OAI - https://aws.amazon.com/premiumsupport/knowledge-center/cloudfront-serve-static-website/

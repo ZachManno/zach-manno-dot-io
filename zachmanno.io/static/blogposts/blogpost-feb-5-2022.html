@@ -36,7 +36,7 @@
                         <!-- Post header-->
                         <header class="mb-4">
                             <!-- Post title-->
-                            <h1 class="fw-bolder mb-1">How I Created This Serverless Website</h1>
+                            <h1 class="fw-bolder mb-1">How I Created This Serverless Website (Tutorial Intro)</h1>
                             <!-- Post meta content-->
                             <div class="text-muted fst-italic mb-2">Posted on February 5, 2022</div>
                             <!-- Post categories-->
@@ -48,12 +48,32 @@
                         <figure class="mb-4"><img class="img-fluid rounded" src="../assets/serverlessComputingBanner.jpeg" alt="..." /></figure>
                         <!-- Post content-->
                         <section class="mb-5">
-                            <p class="fs-5 mb-4">Science is an enterprise that should be cherished as an activity of the free human mind. Because it transforms who we are, how we live, and it gives us an understanding of our place in the universe.</p>
-                            <p class="fs-5 mb-4">The universe is large and old, and the ingredients for life as we know it are everywhere, so there's no reason to think that Earth would be unique in that regard. Whether of not the life became intelligent is a different question, and we'll see if we find that.</p>
-                            <p class="fs-5 mb-4">If you get asteroids about a kilometer in size, those are large enough and carry enough energy into our system to disrupt transportation, communication, the food chains, and that can be a really bad day on Earth.</p>
-                            <!-- <h2 class="fw-bolder mb-4 mt-5">I have odd cosmic thoughts every day </h2>-->
-                            <p class="fs-5 mb-4">For me, the most fascinating interface is Twitter. I have odd cosmic thoughts every day and I realized I could hold them to myself or share them with people who might be interested.</p>
-                            <p class="fs-5 mb-4">Venus has a runaway greenhouse effect. I kind of want to know what happened there because we're twirling knobs here on Earth without knowing the consequences of it. Mars once had running water. It's bone dry today. Something bad happened there as well.</p>
+                            <p class="fs-5 mb-4">
+                                This is the introduction to a multipart tutorial on how to create your own personal serverless website to write your own blogs and showcase your projects!
+                                We will go step-by-step through the whole process - we will set up an AWS account,
+                                go over the <a href="https://www.serverless.com/">Serverless Framework</a>,
+                                bring up some AWS infrastructure, write some HTML and CSS, configure SSL,
+                                and write a backend API or two. Just a warning this will not be free, but it will be very cheap!
+                            </p>
+                             <h2 class="fw-bolder mb-4 mt-5"> Why serverless? </h2>
+                            <p class="fs-5 mb-4">
+                                Setting up a web server will always have a cost. If you use a cloud provider
+                                to provision a server, even the smallest server will come at a minimum cost per month. You can provision
+                                a tiny AWS "T2.nano" server for around $4.20 per month, or a more reasonable "T2.micro" for around $8 per month.
+                                Our serverless application will be hosted on AWS S3 object-based storage which costs $0.023 per GB of data per month, and AWS Cloudfront
+                                content delivery network which costs $0.085 for the first 10TB of data served per month. If your site has relatively low traffic, this serverless
+                                deployment should cost under $1 per month (there will be some other small fees which will be talked about later).
+                            </p>
+                            <p class="fs-5 mb-4">
+                                In addition to cost, going serverless will save you something even more valuable: time. You don't have to maintain a server, upgrade the
+                                operating system, patch vulnerabilities, etc. AWS serves the content directly from your S3 bucket. When we get to creating a backend, AWS serverless
+                                Lambda functions provide their own runtime and compute. You implement their function handler and Lambda will run your code for you,
+                                so all you have to do is maintain your code!
+                            </p>
+                            <h2 class="fw-bolder mb-4 mt-5"> Let's Get Started</h2>
+                            <p class="fs-5 mb-4">
+                                Go to the next post for part 1 of the tutorial!
+                            </p>
                         </section>
                     </article>
                     <!-- Comments section-->
