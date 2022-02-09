@@ -40,6 +40,16 @@ Use OAI - https://aws.amazon.com/premiumsupport/knowledge-center/cloudfront-serv
 
 # Blog Styling Examples
 
+### List
+```
+<ul class="fs-5 mb-4">
+    <li> Create an AWS account and download the AWS CLI</li>
+    <li> Install the <a href="https://www.serverless.com/">Serverless Framework</a> to deploy an S3
+        bucket
+    </li>
+</ul>
+```
+
 ### Code Block
 For any code block add the [syntax highlighting library](https://highlightjs.org/usage/) 
 to the html:
