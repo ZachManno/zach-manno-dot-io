@@ -68,7 +68,8 @@
                         <li> Use Route53 to create our own domain name
                             and routing record so users can access our site
                         </li>
-                        <li> Upload a blog template's HTML/CSS/JS files to the bucket for a professional looking site! </li>
+                        <li> Upload a blog template's HTML/CSS/JS files to the bucket for a professional looking site!
+                        </li>
                     </ul>
                     <h2 class="fw-bolder mb-4 mt-5"> Setting up your AWS account</h2>
                     <p class="fs-5 mb-4">
@@ -104,15 +105,17 @@
                     </p>
                     <h2 class="fw-bolder mb-4 mt-5"> Install the Serverless framework</h2>
                     <p class="fs-5 mb-4">
-                        We are going to install the Serverless framework which will allow us to create an S3 bucket and update the
-                        content files in that S3 bucket without having to use the AWS Console, only code. Read the Serverless
+                        We are going to install the Serverless framework which will allow us to create an S3 bucket and
+                        update the
+                        content files in that S3 bucket without having to use the AWS Console, only code. Read the
+                        Serverless
                         documentation <a href="https://github.com/ZachManno/zach-manno-dot-io" target="_blank">https://www.serverless.com</a>
                         if you want more clarity on any of these steps.
                     </p>
                     <p class="fs-5 mb-4">
                         Install node and serverless from the command line in the top level of your repo:
                     </p>
-                        <pre>
+                    <pre>
                             <code class="language-shell">
 brew install node
 
@@ -131,7 +134,8 @@ serverless create -t hello-world -n zach-manno-io -p zachmanno.io
                     </pre>
                     <p class="fs-5 mb-4">
                         Cd into the directory created and edit the Servless configuration file created
-                        for you to add an S3 bucket. Use the following as an example and adjust the names for your website:
+                        for you to add an S3 bucket. Use the following as an example and adjust the names for your
+                        website:
                     </p>
                     <pre>
                             <code class="language-yaml">
@@ -235,16 +239,18 @@ serverless deploy
                     </pre>
                     <h2 class="fw-bolder mb-4 mt-5"> Register the domain name and create Route 53 record</h2>
                     <p class="fs-5 mb-4">
-                        For this part we will be using the AWS console. Login and go to the "Route 53" console.
+                        For this part, we will be using the AWS console. Login and go to the "Route 53" console.
                         You can search "Route 53" in the "Search for Services" search bar. Scroll down and enter your
-                        domain name in the "Register Domain" section and click "check". Make sure the domain is the exact same as your
-                        "siteName" variable in the serverless.yml file. If your intended domain is unavailable you'll have to update and
+                        domain name in the "Register Domain" section and click "check". Make sure the domain is the
+                        exact same as your
+                        "siteName" variable in the serverless.yml file. If your intended domain is unavailable you'll
+                        have to update and
                         run the <code>serverless deploy</code> command again.
                     </p>
                     <figure class="mb-4">
                         <img class="img-fluid rounded"
                              src="../assets/blogpost-feb-7-2022/register-domain.png" alt="..."/>
-                </figure>
+                    </figure>
                     <p class="fs-5 mb-4">
                         Go through all of the steps of purchasing the domain, and be sure to click "create hosted
                         zone" when prompted. Now you should have a hosted zone for your domain:
@@ -252,7 +258,7 @@ serverless deploy
                     <figure class="mb-4">
                         <img class="img-fluid rounded"
                              src="../assets/blogpost-feb-7-2022/hosted-zone.png" alt="..."/>
-                </figure>
+                    </figure>
                     <p class="fs-5 mb-4">
                         Click into the hosted zone created and then click into the domain name. Now, create an
                         A record with the value as the S3 website format:
@@ -263,12 +269,46 @@ serverless deploy
                     <figure class="mb-4">
                         <img class="img-fluid rounded"
                              src="../assets/blogpost-feb-7-2022/r53-a-record.png" alt="..."/>
-                </figure>
-                <p class="fs-5 mb-4">
-                    You should now be able to go to your site and
-                    you should see your index.html as your site!
-                    (Make sure you go to <code>http://your-domain.com</code>, not <code>https</code>)
-                </p>
+                    </figure>
+                    <p class="fs-5 mb-4">
+                        You should now be able to go to your site and
+                        you should see your index.html as your site!
+                        (Make sure you go to <code>http://your-domain.com</code>, not <code>https</code>)
+                    </p>
+                    <h2 class="fw-bolder mb-4 mt-5"> Bootstrap Blog Starter Template </h2>
+                    <p class="fs-5 mb-4">
+                        Now it's time to get us an actual website! This is where we'll pull the template from:
+                        <br>
+                        <a href="https://github.com/StartBootstrap/startbootstrap-blog-home" target="_blank">https://github.com/StartBootstrap/startbootstrap-blog-home</a>
+                        <br>
+                        Make a directory for the template, clone the repo and install the template using NPM:
+                    </p>
+                    <pre>
+                        <code>
+mkdir template
+cd template
+git clone https://github.com/StartBootstrap/startbootstrap-blog-home.git
+cd startbootstrap-blog-home
+npm i startbootstrap-blog-home
+npm install
+npm run build
+                        </code>
+                    </pre>
+                    <p class="fs-5 mb-4">
+                        This creates all the files needed for the site in the <code>/dist</code> directory. Copy this folder
+                        to the <code>/static</code> folder, make any modifications you'd like, and deploy your new site!
+                    </p>
+                    <pre>
+                        <code>
+cp -R dist/ ../../static/
+cd ../../
+serverless deploy
+                        </code>
+                    </pre>
+                    <p class="fs-5 mb-4">
+                        That's it for part 1. You'll notice your browser has your site as "not secure". Stay tuned
+                        for part 2 where we will create a Cloudfront distribution and SSL certificate! Thanks for reading!!
+                    </p>
                 </section>
             </article>
             <!-- Comments section-->
