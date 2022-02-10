@@ -234,6 +234,41 @@ serverless deploy
                         </code>
                     </pre>
                     <h2 class="fw-bolder mb-4 mt-5"> Register the domain name and create Route 53 record</h2>
+                    <p class="fs-5 mb-4">
+                        For this part we will be using the AWS console. Login and go to the "Route 53" console.
+                        You can search "Route 53" in the "Search for Services" search bar. Scroll down and enter your
+                        domain name in the "Register Domain" section and click "check". Make sure the domain is the exact same as your
+                        "siteName" variable in the serverless.yml file. If your intended domain is unavailable you'll have to update and
+                        run the <code>serverless deploy</code> command again.
+                    </p>
+                    <figure class="mb-4">
+                        <img class="img-fluid rounded"
+                             src="../assets/blogpost-feb-7-2022/register-domain.png" alt="..."/>
+                </figure>
+                    <p class="fs-5 mb-4">
+                        Go through all of the steps of purchasing the domain, and be sure to click "create hosted
+                        zone" when prompted. Now you should have a hosted zone for your domain:
+                    </p>
+                    <figure class="mb-4">
+                        <img class="img-fluid rounded"
+                             src="../assets/blogpost-feb-7-2022/hosted-zone.png" alt="..."/>
+                </figure>
+                    <p class="fs-5 mb-4">
+                        Click into the hosted zone created and then click into the domain name. Now, create an
+                        A record with the value as the S3 website format:
+                        <br><br>
+                        <code>s3-website-Region.amazonaws.com</code>
+                        <br>
+                    </p>
+                    <figure class="mb-4">
+                        <img class="img-fluid rounded"
+                             src="../assets/blogpost-feb-7-2022/r53-a-record.png" alt="..."/>
+                </figure>
+                <p class="fs-5 mb-4">
+                    You should now be able to go to your site and
+                    you should see your index.html as your site!
+                    (Make sure you go to <code>http://your-domain.com</code>, not <code>https</code>)
+                </p>
                 </section>
             </article>
             <!-- Comments section-->
