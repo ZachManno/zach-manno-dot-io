@@ -102,3 +102,14 @@ custom:
       </code>
    </pre>
 ```
+
+# Serverless Rust API
+```shell
+npx serverless install \
+  --url https://github.com/softprops/serverless-aws-rust-http \
+  --name rust-backend-lambda
+
+cd rust-backend-lambda
+npm i
+npx serverless deploy
+```
