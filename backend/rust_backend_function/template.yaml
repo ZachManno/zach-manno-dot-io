@@ -17,6 +17,14 @@ Resources:
           Properties:
             Path: /weather
             Method: GET
+      Environment:
+        Variables:
+          API_KEY: !Ref WeatherApiKey
+
+Parameters:
+  WeatherApiKey:
+    Type: String
+    Description: API key for weather API
 
 Outputs:
   FunctionName:
