@@ -2,7 +2,7 @@ AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 
 Resources:
-  HelloWorldFunction:
+  WeatherFunction:
     Type: AWS::Serverless::Function
     Properties:
       MemorySize: 128
@@ -20,7 +20,7 @@ Resources:
 
 Outputs:
   FunctionName:
-    Value: !Ref HelloWorldFunction
+    Value: !Ref WeatherFunction
     Description: Name of the Lambda function
   ApiUrl:
     Description: "API Gateway endpoint URL"
