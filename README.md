@@ -104,12 +104,20 @@ custom:
 ```
 
 # Serverless Rust API
-```shell
-npx serverless install \
-  --url https://github.com/softprops/serverless-aws-rust-http \
-  --name rust-backend-lambda
+Followed instructions here for startup:
 
-cd rust-backend-lambda
-npm i
-npx serverless deploy
+https://github.com/awslabs/aws-lambda-rust-runtime
+
+```commandline
+cargo zigbuild --release --target aarch64-unknown-linux-gnu
+
+cp ./target/aarch64-unknown-linux-gnu/release/rust_backend_function ./build/bootstrap
+
+sam deploy --guided
+
+aws lambda invoke  --cli-binary-format raw-in-base64-out \
+  --function-name sam-app-HelloWorldFunction-ft3RDw5Whbua \
+  --payload '{"firstName": "Zach"}' \
+  output.json
 ```
+
