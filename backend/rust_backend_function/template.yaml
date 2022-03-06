@@ -11,8 +11,17 @@ Resources:
       Runtime: provided.al2
       Timeout: 5
       CodeUri: build/
+      Events:
+        Api:
+          Type: HttpApi
+          Properties:
+            Path: /weather
+            Method: GET
 
 Outputs:
   FunctionName:
     Value: !Ref HelloWorldFunction
     Description: Name of the Lambda function
+  ApiUrl:
+    Description: "API Gateway endpoint URL"
+    Value: !Sub "https://${ServerlessHttpApi}.execute-api.${AWS::Region}.amazonaws.com/"

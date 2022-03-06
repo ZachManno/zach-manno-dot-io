@@ -113,7 +113,7 @@ cargo zigbuild --release --target aarch64-unknown-linux-gnu
 
 cp ./target/aarch64-unknown-linux-gnu/release/rust_backend_function ./build/bootstrap
 
-sam deploy --guided
+sam deploy
 
 aws lambda invoke  --cli-binary-format raw-in-base64-out \
   --function-name sam-app-HelloWorldFunction-ft3RDw5Whbua \
