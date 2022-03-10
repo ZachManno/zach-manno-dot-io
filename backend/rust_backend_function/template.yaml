@@ -14,6 +14,12 @@ Resources:
       Events:
         Api:
           Type: HttpApi
+          Api:
+            Cors:
+              AllowMethods: "'GET,POST,OPTIONS'"
+              AllowHeaders: "'content-type'"
+              AllowOrigin: "'*'"
+              AllowCredentials: "'*'"
           Properties:
             Path: /weather
             Method: GET
