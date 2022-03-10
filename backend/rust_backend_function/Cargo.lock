@@ -628,9 +628,9 @@ checksum = "87f3e037eac156d1775da914196f0f37741a274155e34a0b7e427c35d2a2ecb9"
 
 [[package]]
 name = "openssl"
-version = "0.10.38"
+version = "0.10.33"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "0c7ae222234c30df141154f159066c5093ff73b63204dcda7121eb082fc56a95"
+checksum = "a61075b62a23fef5a29815de7536d940aa35ce96d18ce0cc5076272db678a577"
 dependencies = [
  "bitflags",
  "cfg-if",
@@ -647,6 +647,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ff011a302c396a5197692431fc1948019154afc178baf7d8e37367442a4601cf"
 
 [[package]]
+name = "openssl-src"
+version = "111.17.0+1.1.1m"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "05d6a336abd10814198f66e2a91ccd7336611f30334119ca8ce300536666fcf4"
+dependencies = [
+ "cc",
+]
+
+[[package]]
 name = "openssl-sys"
 version = "0.9.72"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -655,6 +664,7 @@ dependencies = [
  "autocfg",
  "cc",
  "libc",
+ "openssl-src",
  "pkg-config",
  "vcpkg",
 ]
@@ -818,6 +828,7 @@ dependencies = [
  "lambda_runtime",
  "log",
  "maplit",
+ "openssl",
  "reqwest",
  "serde",
  "serde_derive",

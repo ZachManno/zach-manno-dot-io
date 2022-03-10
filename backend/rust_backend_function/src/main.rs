@@ -45,7 +45,7 @@ async fn func(event: LambdaEvent<Value>) -> Result<Value, Error> {
     )
 }
 
-async fn call_weather_api(api_key: &str) -> Result<Response, Error> {
+async fn call_weather_api(api_key: &str) -> Result<Response, reqwest::Error> {
     // Build the client using the builder pattern
     let client = reqwest::Client::new();
 
@@ -54,7 +54,7 @@ async fn call_weather_api(api_key: &str) -> Result<Response, Error> {
         .get(format!("https://api.openweathermap.org/data/2.5/weather?\
             appid={}\
             &q=Philadelphia%2CUSA&units=imperial", api_key))
-        .send();
+        .send().await;
 
     return response;
 }

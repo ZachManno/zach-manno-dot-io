@@ -10,7 +10,7 @@ pub struct WeatherResponse {
     pub main: Main,
     pub visibility: i64,
     pub wind: Wind,
-    pub rain: Rain,
+    pub rain: Option<Rain>,
     pub clouds: Clouds,
     pub dt: i64,
     pub sys: Sys,
