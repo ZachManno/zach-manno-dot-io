@@ -18,7 +18,7 @@ function callWeather() {
   .then(response => response.json())
   .then(data => {
     console.log(data);
-    $("#weatherID").text('It is ' + Math.round(parseFloat(data.temperature)) + ' degrees in Philadelphia right now!');
+    $("#weatherID").text('It is ' + Math.round(parseFloat(data.temp)) + ' degrees in Philadelphia right now!');
   }
   );
 }
