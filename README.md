@@ -119,6 +119,12 @@ cp ./target/aarch64-unknown-linux-gnu/release/rust_backend_function ./build/boot
 
 sam deploy --parameter-overrides WeatherApiKey=the_key
 ```
+To deploy locally:
+```shell
+sam local start-api --parameter-overrides WeatherApiKey=the_key
+
+curl --request GET --url 'http://127.0.0.1:3000/weather' 
+```
 
 To test:
 ```shell
