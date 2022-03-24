@@ -1,180 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Zach Manno - Serverless Website Tutorial Intro</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="../css/styles.css" rel="stylesheet" />
-    </head>
-    <body>
-        <!-- Responsive navbar-->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container">
-                <a class="navbar-brand" href="/">Zach Manno Dot IO</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="../about.html">About</a></li>
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../blog.html">Blog</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <!-- Page content-->
-        <div class="container mt-5">
-            <div class="row">
-                <div class="col-lg-8">
-                    <!-- Post content-->
-                    <article>
-                        <!-- Post header-->
-                        <header class="mb-4">
-                            <!-- Post title-->
-                            <h1 class="fw-bolder mb-1">How I Created This Serverless Website (Tutorial Intro)</h1>
-                            <!-- Post meta content-->
-                            <div class="text-muted fst-italic mb-2">Posted on February 5, 2022</div>
-                            <!-- Post categories-->
-                            <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Development</a>
-                            <a class="badge bg-secondary text-decoration-none link-light" href="#!">Serverless</a>
-                            <a class="badge bg-secondary text-decoration-none link-light" href="#!">AWS</a>
-                        </header>
-                        <!-- Preview image figure-->
-                        <figure class="mb-4"><img class="img-fluid rounded" src="../assets/serverlessComputingBanner.jpeg" alt="..." /></figure>
-                        <!-- Post content-->
-                        <section class="mb-5">
-                            <p class="fs-5 mb-4">
-                                This is the introduction to a multipart tutorial on how to create your own personal serverless website to write your own blogs and showcase your projects!
-                                We will go step-by-step through the whole process - we will set up an AWS account,
-                                go over the <a href="https://www.serverless.com/">Serverless Framework</a>,
-                                bring up some AWS infrastructure, write some HTML and CSS, configure SSL,
-                                and write a backend API or two. Just a warning this will not be free, but it will be very cheap!
-                            </p>
-                             <h2 class="fw-bolder mb-4 mt-5"> Why serverless? </h2>
-                            <p class="fs-5 mb-4">
-                                Setting up a web server will always have a cost. If you use a cloud provider
-                                to provision a server, even the smallest server will come at a minimum cost per month. You can provision
-                                a tiny AWS "T2.nano" server for around $4.20 per month, or a more reasonable "T2.micro" for around $8 per month.
-                                Our serverless application will be hosted on AWS S3 object-based storage which costs $0.023 per GB of data per month, and AWS Cloudfront
-                                content delivery network which costs $0.085 for the first 10TB of data served per month. If your site has relatively low traffic, this serverless
-                                deployment should cost under $1 per month (there will be some other small fees which will be talked about later).
-                            </p>
-                            <p class="fs-5 mb-4">
-                                In addition to cost, going serverless will save you something even more valuable: time. You don't have to maintain a server, upgrade the
-                                operating system, patch vulnerabilities, etc. AWS serves the content directly from your S3 bucket. When we get to creating a backend, AWS serverless
-                                Lambda functions provide their own runtime and compute. You implement their function handler and Lambda will run your code for you,
-                                so all you have to do is maintain your code!
-                            </p>
-                            <h2 class="fw-bolder mb-4 mt-5"> Let's Get Started</h2>
-                            <p class="fs-5 mb-4">
-                                Go to the next post for part 1 of the tutorial!
-                                <br>
-                                <a href="blogpost-feb-7-2022.html">
-                                    Creating a Static Serverless Website Using AWS and Infrastructure as Code (Tutorial Part 1)
-                                </a>
-                            </p>
-                        </section>
-                    </article>
-                    <!-- Comments section-->
-<!--                    <section class="mb-5">-->
-<!--                        <div class="card bg-light">-->
-<!--                            <div class="card-body">-->
-<!--                                &lt;!&ndash; Comment form&ndash;&gt;-->
-<!--                                <form class="mb-4"><textarea class="form-control" rows="3" placeholder="Join the discussion and leave a comment!"></textarea></form>-->
-<!--                                &lt;!&ndash; Comment with nested comments&ndash;&gt;-->
-<!--                                <div class="d-flex mb-4">-->
-<!--                                    &lt;!&ndash; Parent comment&ndash;&gt;-->
-<!--                                    <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>-->
-<!--                                    <div class="ms-3">-->
-<!--                                        <div class="fw-bold">Commenter Name</div>-->
-<!--                                        If you're going to lead a space frontier, it has to be government; it'll never be private enterprise. Because the space frontier is dangerous, and it's expensive, and it has unquantified risks.-->
-<!--                                        &lt;!&ndash; Child comment 1&ndash;&gt;-->
-<!--                                        <div class="d-flex mt-4">-->
-<!--                                            <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>-->
-<!--                                            <div class="ms-3">-->
-<!--                                                <div class="fw-bold">Commenter Name</div>-->
-<!--                                                And under those conditions, you cannot establish a capital-market evaluation of that enterprise. You can't get investors.-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-<!--                                        &lt;!&ndash; Child comment 2&ndash;&gt;-->
-<!--                                        <div class="d-flex mt-4">-->
-<!--                                            <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>-->
-<!--                                            <div class="ms-3">-->
-<!--                                                <div class="fw-bold">Commenter Name</div>-->
-<!--                                                When you put money directly to a problem, it makes a good headline.-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                                &lt;!&ndash; Single comment&ndash;&gt;-->
-<!--                                <div class="d-flex">-->
-<!--                                    <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>-->
-<!--                                    <div class="ms-3">-->
-<!--                                        <div class="fw-bold">Commenter Name</div>-->
-<!--                                        When I look at the universe and all the ways the universe wants to kill us, I find it hard to reconcile that with statements of beneficence.-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </section>-->
-                </div>
-                <!-- Side widgets-->
-                <div class="col-lg-4">
-                    <!-- Search widget-->
-<!--                    <div class="card mb-4">-->
-<!--                        <div class="card-header">Search</div>-->
-<!--                        <div class="card-body">-->
-<!--                            <div class="input-group">-->
-<!--                                <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />-->
-<!--                                <button class="btn btn-primary" id="button-search" type="button">Go!</button>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-                    <!-- Categories widget-->
-                    <div class="card mb-4">
-                        <div class="card-header">My Links</div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <ul class="list-unstyled mb-0">
-                                        <li><a href="https://github.com/ZachManno/zach-manno-dot-io" target="_blank" > This Site's Source Code</a></li>
-                                        <li><a href="https://github.com/ZachManno" target="_blank">My Github</a></li>
-                                    </ul>
-                                </div>
-                                <div class="col-sm-6">
-                                    <ul class="list-unstyled mb-0">
-                                        <li><a href="https://www.linkedin.com/in/zachmanno" target="_blank" >LinkedIn</a></li>
-                                        <li><a href="mailto:zacharymanno@gmail.com?subject=Hello%20Zach&body=Zach%2C">Email</a></li>
-<!--                                        <li><a href="#!">Resume</a></li>-->
-                                    </ul>
-                                </div>
-                            </div>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <title>Zach Manno - Serverless Website Tutorial Intro</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico"/>
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="../css/styles.css" rel="stylesheet"/>
+</head>
+<body>
+<!-- Responsive navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="/">Zach Manno Dot IO</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
+                class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="../about.html">About</a></li>
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="../blog.html">Blog</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- Page content-->
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8">
+            <!-- Post content-->
+            <article>
+                <!-- Post header-->
+                <header class="mb-4">
+                    <!-- Post title-->
+                    <h1 class="fw-bolder mb-1">How I Created This Serverless Website (Tutorial Intro)</h1>
+                    <!-- Post meta content-->
+                    <div class="text-muted fst-italic mb-2">Posted on February 5, 2022</div>
+                    <!-- Post categories-->
+                    <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Development</a>
+                    <a class="badge bg-secondary text-decoration-none link-light" href="#!">Serverless</a>
+                    <a class="badge bg-secondary text-decoration-none link-light" href="#!">AWS</a>
+                </header>
+                <!-- Preview image figure-->
+                <figure class="mb-4"><img class="img-fluid rounded" src="../assets/serverlessComputingBanner.jpeg"
+                                          alt="..."/></figure>
+                <!-- Post content-->
+                <section class="mb-5">
+                    <p class="fs-5 mb-4">
+                        This is the introduction to a multipart tutorial on how to create your own personal serverless
+                        website to write your own blogs and showcase your projects!
+                        We will go step-by-step through the whole process - we will set up an AWS account,
+                        go over the <a href="https://www.serverless.com/">Serverless Framework</a>,
+                        bring up some AWS infrastructure, write some HTML and CSS, configure SSL,
+                        and write a backend API or two. Just a warning this will not be free, but it will be very cheap!
+                    </p>
+                    <h2 class="fw-bolder mb-4 mt-5"> Why serverless? </h2>
+                    <p class="fs-5 mb-4">
+                        Setting up a web server will always have a cost. If you use a cloud provider
+                        to provision a server, even the smallest server will come at a minimum cost per month. You can
+                        provision
+                        a tiny AWS "T2.nano" server for around $4.20 per month, or a more reasonable "T2.micro" for
+                        around $8 per month.
+                        Our serverless application will be hosted on AWS S3 object-based storage which costs $0.023 per
+                        GB of data per month, and AWS Cloudfront
+                        content delivery network which costs $0.085 for the first 10TB of data served per month. If your
+                        site has relatively low traffic, this serverless
+                        deployment should cost under $1 per month (there will be some other small fees which will be
+                        talked about later).
+                    </p>
+                    <p class="fs-5 mb-4">
+                        In addition to cost, going serverless will save you something even more valuable: time. You
+                        don't have to maintain a server, upgrade the
+                        operating system, patch vulnerabilities, etc. AWS serves the content directly from your S3
+                        bucket. When we get to creating a backend, AWS serverless
+                        Lambda functions provide their own runtime and compute. You implement their function handler and
+                        Lambda will run your code for you,
+                        so all you have to do is maintain your code!
+                    </p>
+                    <h2 class="fw-bolder mb-4 mt-5"> Let's Get Started</h2>
+                    <p class="fs-5 mb-4">
+                        Go to the next post for part 1 of the tutorial!
+                        <br>
+                        <a href="blogpost-feb-7-2022.html">
+                            Creating a Static Serverless Website Using AWS and Infrastructure as Code (Tutorial Part 1)
+                        </a>
+                    </p>
+                </section>
+            </article>
+            <!-- Comments section-->
+            <!--                    <section class="mb-5">-->
+            <!--                        <div class="card bg-light">-->
+            <!--                            <div class="card-body">-->
+            <!--                                &lt;!&ndash; Comment form&ndash;&gt;-->
+            <!--                                <form class="mb-4"><textarea class="form-control" rows="3" placeholder="Join the discussion and leave a comment!"></textarea></form>-->
+            <!--                                &lt;!&ndash; Comment with nested comments&ndash;&gt;-->
+            <!--                                <div class="d-flex mb-4">-->
+            <!--                                    &lt;!&ndash; Parent comment&ndash;&gt;-->
+            <!--                                    <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>-->
+            <!--                                    <div class="ms-3">-->
+            <!--                                        <div class="fw-bold">Commenter Name</div>-->
+            <!--                                        If you're going to lead a space frontier, it has to be government; it'll never be private enterprise. Because the space frontier is dangerous, and it's expensive, and it has unquantified risks.-->
+            <!--                                        &lt;!&ndash; Child comment 1&ndash;&gt;-->
+            <!--                                        <div class="d-flex mt-4">-->
+            <!--                                            <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>-->
+            <!--                                            <div class="ms-3">-->
+            <!--                                                <div class="fw-bold">Commenter Name</div>-->
+            <!--                                                And under those conditions, you cannot establish a capital-market evaluation of that enterprise. You can't get investors.-->
+            <!--                                            </div>-->
+            <!--                                        </div>-->
+            <!--                                        &lt;!&ndash; Child comment 2&ndash;&gt;-->
+            <!--                                        <div class="d-flex mt-4">-->
+            <!--                                            <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>-->
+            <!--                                            <div class="ms-3">-->
+            <!--                                                <div class="fw-bold">Commenter Name</div>-->
+            <!--                                                When you put money directly to a problem, it makes a good headline.-->
+            <!--                                            </div>-->
+            <!--                                        </div>-->
+            <!--                                    </div>-->
+            <!--                                </div>-->
+            <!--                                &lt;!&ndash; Single comment&ndash;&gt;-->
+            <!--                                <div class="d-flex">-->
+            <!--                                    <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>-->
+            <!--                                    <div class="ms-3">-->
+            <!--                                        <div class="fw-bold">Commenter Name</div>-->
+            <!--                                        When I look at the universe and all the ways the universe wants to kill us, I find it hard to reconcile that with statements of beneficence.-->
+            <!--                                    </div>-->
+            <!--                                </div>-->
+            <!--                            </div>-->
+            <!--                        </div>-->
+            <!--                    </section>-->
+        </div>
+        <!-- Side widgets-->
+        <div class="col-lg-4">
+            <!-- Search widget-->
+            <!--                    <div class="card mb-4">-->
+            <!--                        <div class="card-header">Search</div>-->
+            <!--                        <div class="card-body">-->
+            <!--                            <div class="input-group">-->
+            <!--                                <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />-->
+            <!--                                <button class="btn btn-primary" id="button-search" type="button">Go!</button>-->
+            <!--                            </div>-->
+            <!--                        </div>-->
+            <!--                    </div>-->
+            <!-- Categories widget-->
+            <div class="card mb-4">
+                <div class="card-header">My Links</div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <ul class="list-unstyled mb-0">
+                                <li><a href="https://github.com/ZachManno/zach-manno-dot-io" target="_blank"> This
+                                    Site's Source Code</a></li>
+                                <li><a href="https://github.com/ZachManno" target="_blank">My Github</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-6">
+                            <ul class="list-unstyled mb-0">
+                                <li><a href="https://www.linkedin.com/in/zachmanno" target="_blank">LinkedIn</a></li>
+                                <li><a href="mailto:zacharymanno@gmail.com?subject=Hello%20Zach&body=Zach%2C">Email</a>
+                                </li>
+                                <!--                                        <li><a href="#!">Resume</a></li>-->
+                            </ul>
                         </div>
                     </div>
-                    <!-- Side widget-->
-                    <div class="card mb-4">
-                        <div class="card-header">Weather</div>
-                        <div class="card-body" id="weatherID">No weather yet but it's coming! &#9728</div>
+                </div>
+            </div>
+            <!-- Side widget-->
+            <div class="card mb-4">
+                <div class="card-header">Weather</div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="container d-flex align-items-center justify-content-center" id="openWeatherIconDiv">
+                            <img id="openWeatherIcon" src=""
+                                 alt="">
+                        </div>
                     </div>
-                    <div class="card mb-4">
-                        <div class="card-header">News</div>
-                        <div class="card-body"> No news feed yet but it's coming! &#x1f5de</div>
+                    <div class="row">
+                        <p class="text-center" id="weatherID">
+                            Weather is loading...
+                        </p>
                     </div>
                 </div>
             </div>
+            <div class="card mb-4">
+                <div class="card-header">News</div>
+                <div class="card-body"> No news feed yet but it's coming! &#x1f5de</div>
+            </div>
         </div>
-        <!-- Footer-->
-        <footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Zach Manno 2022</p></div>
-        </footer>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
-        <script src="js/scripts.js"></script>
-    </body>
+    </div>
+</div>
+<!-- Footer-->
+<footer class="py-5 bg-dark">
+    <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Zach Manno 2022</p></div>
+</footer>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="../js/scripts.js"></script>
+</body>
 </html>

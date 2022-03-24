@@ -18,7 +18,9 @@ function callWeather() {
   .then(response => response.json())
   .then(data => {
     console.log(data);
+    console.log(data.iconUrl);
     $("#weatherID").text('It is ' + Math.round(parseFloat(data.temp)) + ' degrees in Philadelphia right now!');
+    $("#openWeatherIconDiv img").attr("src", data.iconUrl);
   }
   );
 }

@@ -58,7 +58,7 @@
                         <b>Source Code for the Tutorial</b>
                         <br>
                         <a href="https://github.com/ZachManno/zach-manno-dot-io">https://github.com/ZachManno/zach-manno-dot-io</a>
-                        </p>
+                    </p>
                     <p class="fs-5 mb-4">
                         This tutorial is part 1 of a series of tutorials of creating a fully serverless web application
                         on AWS using mostly infrastructure as code (IoC).
@@ -299,7 +299,8 @@ npm run build
                         </code>
                     </pre>
                     <p class="fs-5 mb-4">
-                        This creates all the files needed for the site in the <code>/dist</code> directory. Copy this folder
+                        This creates all the files needed for the site in the <code>/dist</code> directory. Copy this
+                        folder
                         to the <code>/static</code> folder, make any modifications you'd like, and deploy your new site!
                     </p>
                     <pre>
@@ -311,7 +312,8 @@ serverless deploy
                     </pre>
                     <p class="fs-5 mb-4">
                         That's it for part 1. You'll notice your browser has your site as "not secure". Stay tuned
-                        for part 2 where we will create a Cloudfront distribution and SSL certificate! Thanks for reading!!
+                        for part 2 where we will create a Cloudfront distribution and SSL certificate! Thanks for
+                        reading!!
                     </p>
                 </section>
             </article>
@@ -377,7 +379,8 @@ serverless deploy
                     <div class="row">
                         <div class="col-sm-6">
                             <ul class="list-unstyled mb-0">
-                                <li><a href="https://github.com/ZachManno/zach-manno-dot-io" target="_blank" > This Site's Source Code</a></li>
+                                <li><a href="https://github.com/ZachManno/zach-manno-dot-io" target="_blank"> This
+                                    Site's Source Code</a></li>
                                 <li><a href="https://github.com/ZachManno" target="_blank">My Github</a></li>
                             </ul>
                         </div>
@@ -395,7 +398,19 @@ serverless deploy
             <!-- Side widget-->
             <div class="card mb-4">
                 <div class="card-header">Weather</div>
-                <div class="card-body" id="weatherID">No weather yet but it's coming! &#9728</div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="container d-flex align-items-center justify-content-center" id="openWeatherIconDiv">
+                            <img id="openWeatherIcon" src=""
+                                 alt="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <p class="text-center" id="weatherID">
+                            Weather is loading...
+                        </p>
+                    </div>
+                </div>
             </div>
             <div class="card mb-4">
                 <div class="card-header">News</div>
@@ -417,6 +432,6 @@ serverless deploy
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
 <script>hljs.highlightAll();</script>
 <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
-<script src="js/scripts.js"></script>
+<script src="../js/scripts.js"></script>
 </body>
 </html>
