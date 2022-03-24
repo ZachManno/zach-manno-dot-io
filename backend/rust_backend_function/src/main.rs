@@ -1,5 +1,6 @@
 mod weather;
 mod lambda_gateway;
+mod zachmanno_dot_io_weather;
 
 use lambda_runtime::{service_fn, LambdaEvent, Error};
 use serde_json::{json, Value};
@@ -8,6 +9,7 @@ use std::future::Future;
 use reqwest::{Error as req_err, Response};
 use crate::weather::WeatherResponse;
 use crate::lambda_gateway::{LambdaResponse, LambdaResponseBuilder};
+use crate::zachmanno_dot_io_weather::ZachMannoDotIoWeatherResponse;
 
 #[tokio::main]
 async fn main() -> Result<(), Error> {
@@ -22,17 +24,32 @@ async fn func(event: LambdaEvent<Value>) -> Result<LambdaResponse, Error>  {
     let weather_api_key = env::var("API_KEY").unwrap();
     let weather_data = call_weather_api(&weather_api_key).await;
 
-    let temp = match weather_data {
+    let zachmanno_dot_io_weather_response = match weather_data {
         Ok(data) => match data.json::<WeatherResponse>().await {
-            Ok(json_parsed_response) => (format!("{}", json_parsed_response.main.temp)),
+            Ok(json_parsed_response) => {
+                let zachmanno_dot_io_weather_response = ZachMannoDotIoWeatherResponse {
+                    temp: format!("{}", json_parsed_response.main.temp),
+                    icon_url: format!("https://openweathermap.org/img/wn/{}@2x.png", json_parsed_response.weather[0].icon),
+                    err_msg: "".to_string()
+                };
+                zachmanno_dot_io_weather_response
+            },
             Err(json_error) => {
                 println!("Problem calling weather api (json parse): {:?}", json_error);
-                String::from("")
+                ZachMannoDotIoWeatherResponse {
+                    temp: "".to_string(),
+                    icon_url: "".to_string(),
+                    err_msg: "Problem calling weather api (json parse)".to_string()
+                }
             }
         },
         Err(error) => {
             println!("Problem calling weather api: {:?}", error);
-            String::from("")
+            ZachMannoDotIoWeatherResponse {
+                temp: "".to_string(),
+                icon_url: "".to_string(),
+                err_msg: "Problem communicating with weather api".to_string()
+            }
         }
     };
 
@@ -43,13 +60,7 @@ async fn func(event: LambdaEvent<Value>) -> Result<LambdaResponse, Error>  {
         .with_header("Access-Control-Allow-Origin", "*")
         .with_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, PATCH, DELETE")
         .with_header("Access-Control-Allow-Headers", "X-Requested-With,content-type")
-        .with_json(json!(
-            {
-                "temperature": format!("{}", temp),
-                "description": format!("{}", "d"),
-                "location": format!("{}", "Philadelphia")
-            }
-        ))
+        .with_json(zachmanno_dot_io_weather_response)
         .build();
 
     Ok(response)
