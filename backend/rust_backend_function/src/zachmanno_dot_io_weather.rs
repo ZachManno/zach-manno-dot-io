@@ -5,6 +5,8 @@ use serde_derive::Serialize;
 #[serde(rename_all = "camelCase")]
 pub struct ZachMannoDotIoWeatherResponse {
     pub temp: String,
+    #[serde(rename = "iconUrl")]
     pub icon_url: String,
+    #[serde(rename = "errMsg")]
     pub err_msg: String,
 }
