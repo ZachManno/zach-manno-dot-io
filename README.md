@@ -38,6 +38,17 @@ serverless deploy
 # Resources
 Use OAI - https://aws.amazon.com/premiumsupport/knowledge-center/cloudfront-serve-static-website/
 
+# Utility Script to Create a New Blog Post
+To create a new blog post, a new blog HTML file must be created and the blog.html and index.html
+files need to be updated. The generate_new_blogpost.py script does this automatically. To use:
+
+- cd to the `scripts` directory
+- Download the blog header image you want to include for this blog and copy it to this scripts directory
+- Run the python script in the scripts directory giving the date and blog header:
+    - `python3 generate_new_blogpost.py --post-date 2022-03-27 --post-title "Generating A New Blogpost" --post-header-image new-blogpost-sample-pic.jpeg`
+    - see `usage` in the generate_new_blogpost.py script for usage details
+- Edit the html files to fill in the last details (look for "TODO"s that were generated)
+
 # Blog Styling Examples
 
 ### List
