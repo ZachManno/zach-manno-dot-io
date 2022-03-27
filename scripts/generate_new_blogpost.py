@@ -99,9 +99,10 @@ class BlogPostGenerator:
         python_date = datetime.strptime(self.post_date, '%Y-%m-%d')
         blogpost_filename = f'blogpost-{python_date.strftime("%b-%d-%Y").lower()}.html'
         self.create_blogfile_from_template(self.blogposts_content_dir / blogpost_filename)
-        self.edit_index_and_blog_files(blogpost_filename, self.static_content_dir / 'blog.html')
+        self.edit_index_and_blog_files(blogpost_filename, self.static_content_dir / 'blog.html',
+                                       self.static_content_dir / 'index.html')
 
-    def edit_index_and_blog_files(self, blogpost_filename, blog_html_file):
+    def edit_index_and_blog_files(self, blogpost_filename, blog_html_file, index_html_file):
         human_readable_date = datetime.strptime(self.post_date, '%Y-%m-%d').strftime('%B %d, %Y')
         search_and_replace_dict = {
             '{POST_TITLE}': self.post_title,
@@ -110,27 +111,40 @@ class BlogPostGenerator:
             '{FULL_BLOGPOST_FILENAME}': blogpost_filename,
             '{BLOG_IMAGE}': self.post_header_image
         }
-        blog_html_text = BlogPostGenerator.BLOG_HTML_TEMPLATE
+        html_text = BlogPostGenerator.BLOG_HTML_TEMPLATE
         for search_term, replace_term in search_and_replace_dict.items():
-            blog_html_text = blog_html_text.replace(search_term, replace_term)
-        print(blog_html_text)
+            html_text = html_text.replace(search_term, replace_term)
+        print(html_text)
+        lines_to_insert = []
+        for insert_html_line in html_text.split("\n"):
+            lines_to_insert.append(insert_html_line + '\n')
         blog_html_lines = []
+
+        # Insert for blog.html
         with blog_html_file.open("r", encoding="utf-8") as new_blogpost_file:
             blog_html_lines = new_blogpost_file.readlines()
-            lines_to_insert = []
             idx_at_which_to_insert = 0
             for idx, line in enumerate(blog_html_lines):
                 # Find the row with blogPostRow ID, insert the new blog at the top
                 if 'blogPostRow' in line:
                     idx_at_which_to_insert = idx + 1
-                    for insert_html_line in blog_html_text.split("\n"):
-                        lines_to_insert.append(insert_html_line + '\n')
             blog_html_lines[idx_at_which_to_insert:2] = lines_to_insert
-            for line in blog_html_lines:
-                print(line)
         with blog_html_file.open("w", encoding="utf-8") as new_blogpost_file:
             for line in blog_html_lines:
                 new_blogpost_file.write(line)
+
+        # Insert for index.html
+        with index_html_file.open("r", encoding="utf-8") as new_index_file:
+            index_html_lines = new_index_file.readlines()
+            idx_at_which_to_insert = 0
+            for idx, line in enumerate(index_html_lines):
+                # Find the row with blogPostRow ID, insert the new blog at the top
+                if 'blogPostRow' in line:
+                    idx_at_which_to_insert = idx + 1
+            index_html_lines[idx_at_which_to_insert:2] = lines_to_insert
+        with index_html_file.open("w", encoding="utf-8") as new_index_file:
+            for line in index_html_lines:
+                new_index_file.write(line)
 
 
     def create_blogfile_from_template(self, blogpost_file):
