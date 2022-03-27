@@ -30,7 +30,7 @@ class BlogPostGenerator:
         """
                 <div class="col-md-6 mb-4">
                     <div class="card mb-4 h-100">
-                        <a href="#!"><img class="card-img-top" src="assets/serverlessComputingBanner.jpeg"
+                        <a href="#!"><img class="card-img-top" src="assets/{BLOGPOST_FILENAME}/{BLOG_IMAGE}"
                                           alt="..."/></a>
                         <div class="card-body">
                             <div class="small text-muted">{HUMAN_READABLE_DATE}</div>
@@ -99,15 +99,16 @@ class BlogPostGenerator:
         python_date = datetime.strptime(self.post_date, '%Y-%m-%d')
         blogpost_filename = f'blogpost-{python_date.strftime("%b-%d-%Y").lower()}.html'
         self.create_blogfile_from_template(self.blogposts_content_dir / blogpost_filename)
-        #self.edit_index_and_blog_files(blogpost_filename, self.static_content_dir / 'blog.html')
+        self.edit_index_and_blog_files(blogpost_filename, self.static_content_dir / 'blog.html')
 
     def edit_index_and_blog_files(self, blogpost_filename, blog_html_file):
         human_readable_date = datetime.strptime(self.post_date, '%Y-%m-%d').strftime('%B %d, %Y')
         search_and_replace_dict = {
             '{POST_TITLE}': self.post_title,
             '{HUMAN_READABLE_DATE}': human_readable_date,
+            '{BLOGPOST_FILENAME}': blogpost_filename.replace('.html', ''),
             '{FULL_BLOGPOST_FILENAME}': blogpost_filename,
-            '{BLOG_IMAGE}': self.post_header_image.name
+            '{BLOG_IMAGE}': self.post_header_image
         }
         blog_html_text = BlogPostGenerator.BLOG_HTML_TEMPLATE
         for search_term, replace_term in search_and_replace_dict.items():
@@ -137,20 +138,21 @@ class BlogPostGenerator:
         search_and_replace_dict = {
             '{POST_TITLE}': self.post_title,
             '{HUMAN_READABLE_DATE}': human_readable_date,
-            '{BLOGPOST_FILENAME}': blogpost_file.name.replace('.html', '')
+            '{BLOGPOST_FILENAME}': blogpost_file.name.replace('.html', ''),
+            '{BLOG_IMAGE}': self.post_header_image
         }
         copyfile('./blogpost-templates/new-post-template.html', blogpost_file)
         p = Path(self.static_content_dir / 'assets' / blogpost_file.name.replace(".html", ""))
-        print("path name: " + str(p))
+        print(f'Moved the image {self.post_header_image} to the directory {p}')
         p.mkdir(parents=True, exist_ok=True)
-        shutil.move(self.post_header_image, self.static_content_dir / f'{blogpost_file.name.replace(".html", "")}/{self.post_header_image}')
-        # with blogpost_file.open("r", encoding="utf-8") as new_blogpost_file:
-        #     file_data = new_blogpost_file.read()
-        #     for search_term, replace_term in search_and_replace_dict.items():
-        #         file_data = file_data.replace(search_term, replace_term)
-        #
-        # with blogpost_file.open("w", encoding="utf-8") as new_blogpost_file:
-        #     new_blogpost_file.write(file_data)
+        shutil.move(self.post_header_image, p / self.post_header_image)
+        with blogpost_file.open("r", encoding="utf-8") as new_blogpost_file:
+            file_data = new_blogpost_file.read()
+            for search_term, replace_term in search_and_replace_dict.items():
+                file_data = file_data.replace(search_term, replace_term)
+
+        with blogpost_file.open("w", encoding="utf-8") as new_blogpost_file:
+            new_blogpost_file.write(file_data)
 
 
 if __name__ == "__main__":
