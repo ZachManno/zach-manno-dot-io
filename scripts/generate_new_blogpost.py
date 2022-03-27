@@ -2,9 +2,9 @@
 """
     USAGE:
         - With the default directories for this repo
-        generate_new_blogpost.py --post-date 2022-03-27 --post-title "Generating A New Blogpost"
+        python3 generate_new_blogpost.py --post-date 2022-03-27 --post-title "Generating A New Blogpost" --post-header-image new-blogpost-sample-pic.jpeg
         - With custom directories
-        generate_new_blogpost.py ./path/to/static/content-dir ./path/to/blogpost-dir --post-date 2022-03-27 --post-title "Generating A New Blogpost"
+        generate_new_blogpost.py ./path/to/static/content-dir ./path/to/blogpost-dir --post-date 2022-03-27 --post-header-image new-blogpost-sample-pic.jpeg
 """
 import argparse
 import shutil
