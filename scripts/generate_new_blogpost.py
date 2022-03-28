@@ -14,17 +14,6 @@ from shutil import copyfile
 
 
 class BlogPostGenerator:
-    """
-    Create a new JSON Handbrake config file for a folder tree of files
-    using specific settings for high efficiency encoding.
-    If DIR_OUT option is used and is different than DIR then all non-encoded files are
-    first copied to the encoded files dir.
-    -
-    Resolutions can now be set to auto or auto-half - this requires ffprobe to be
-    installed on your system - and will automatically set the resolutions based on the
-    original video, or in case of auto-half to half the size of it (half width and height).
-    Note that using this option will slow down the process as every video file will be checked.
-    """
 
     BLOG_HTML_TEMPLATE = \
         """
