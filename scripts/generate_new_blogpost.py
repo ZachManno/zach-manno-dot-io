@@ -90,7 +90,6 @@ class BlogPostGenerator:
         self.create_blogpost()
 
     def create_blogpost(self):
-        # sys.exit(0)
         print(f'Writing new blog to '
               f'static content dir: {self.static_content_dir}, '
               f'blogpost dir: {self.blogposts_content_dir}, '
@@ -114,7 +113,6 @@ class BlogPostGenerator:
         html_text = BlogPostGenerator.BLOG_HTML_TEMPLATE
         for search_term, replace_term in search_and_replace_dict.items():
             html_text = html_text.replace(search_term, replace_term)
-        print(html_text)
         lines_to_insert = []
         for insert_html_line in html_text.split("\n"):
             lines_to_insert.append(insert_html_line + '\n')
