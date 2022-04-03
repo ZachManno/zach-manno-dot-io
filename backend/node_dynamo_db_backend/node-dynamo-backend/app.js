@@ -63,6 +63,11 @@ exports.handler = async (event, context) => {
           })
           .promise();
         body = `Put item ${requestJSON.id}`;
+        const updatedCount = {
+            server: currentCountBody.Items[0].id,
+            count: currentCount + requestJSON.number
+        }
+        body = updatedCount;
         break;
       default:
         console.log("here2")
