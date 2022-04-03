@@ -1,0 +1,57 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  Template for an HTTP API that creates, updates, and deletes items in DynamoDB
+
+Globals:
+  Function:
+    Timeout: 10
+
+Resources:
+  DDBHandlerFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: node-dynamo-backend/
+      Handler: app.handler
+      Runtime: nodejs12.x
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref CountTable
+      Events:
+        GetCount:
+          Type: HttpApi
+          Properties:
+            Path: /count
+            Method: GET
+        # GetAnItem:
+        #   Type: HttpApi
+        #   Properties:
+        #     Path: /items/{id}
+        #     Method: GET
+        DeleteCount:
+          Type: HttpApi
+          Properties:
+            Path: /count
+            Method: DELETE
+        IncrementCount:
+          Type: HttpApi
+          Properties:
+            Path: /count/increment
+            Method: PUT
+
+  CountTable:
+    Type: AWS::Serverless::SimpleTable
+    Properties:
+      PrimaryKey:
+        Name: id
+        Type: String
+      TableName: zachmanno-dot-io-traffic-count
+
+Outputs:
+  ApiEndpoint:
+    Description: "The invoke URL for our HTTP API"
+    Value: !Sub "https://${ServerlessHttpApi}.execute-api.${AWS::Region}.amazonaws.com/count"
+  Function:
+    Description: "DynamoDB handler function ARN"
+    Value: !GetAtt DDBHandlerFunction.Arn
+
