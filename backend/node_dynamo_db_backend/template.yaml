@@ -3,10 +3,6 @@ Transform: AWS::Serverless-2016-10-31
 Description: >
   Template for an HTTP API that creates, updates, and deletes items in DynamoDB
 
-Globals:
-  Function:
-    Timeout: 10
-
 Resources:
   DDBHandlerFunction:
     Type: AWS::Serverless::Function
@@ -14,30 +10,35 @@ Resources:
       CodeUri: node-dynamo-backend/
       Handler: app.handler
       Runtime: nodejs12.x
+      MemorySize: 128
+      Timeout: 5
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref CountTable
       Events:
-        GetCount:
+        Api:
           Type: HttpApi
+          Api:
+            Cors:
+              AllowMethods: "'GET,PUT,POST,OPTIONS'"
+              AllowHeaders: "'content-type'"
+              AllowOrigin: "'*'"
+              AllowCredentials: "'*'"
           Properties:
-            Path: /count
-            Method: GET
-        # GetAnItem:
-        #   Type: HttpApi
-        #   Properties:
-        #     Path: /items/{id}
-        #     Method: GET
-        DeleteCount:
-          Type: HttpApi
-          Properties:
-            Path: /count
-            Method: DELETE
-        IncrementCount:
-          Type: HttpApi
-          Properties:
-            Path: /count/increment
+            Path: /increment
             Method: PUT
+        OptionsCorsApi:
+          Type: HttpApi
+          Api:
+            Cors:
+              AllowMethods: "'GET,PUT,POST,OPTIONS'"
+              AllowHeaders: "'content-type'"
+              AllowOrigin: "'*'"
+              AllowCredentials: "'*'"
+          Properties:
+            Path: /increment
+            Method: OPTIONS
+
 
   CountTable:
     Type: AWS::Serverless::SimpleTable
@@ -50,7 +51,7 @@ Resources:
 Outputs:
   ApiEndpoint:
     Description: "The invoke URL for our HTTP API"
-    Value: !Sub "https://${ServerlessHttpApi}.execute-api.${AWS::Region}.amazonaws.com/count"
+    Value: !Sub "https://${ServerlessHttpApi}.execute-api.${AWS::Region}.amazonaws.com"
   Function:
     Description: "DynamoDB handler function ARN"
     Value: !GetAtt DDBHandlerFunction.Arn

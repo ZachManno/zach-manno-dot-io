@@ -114,7 +114,27 @@ custom:
    </pre>
 ```
 
-# Serverless Rust API
+# Serverless Framework Python Page Views API
+To install:
+```shell
+cd zachmanno.io
+npm install --save-dev serverless-wsgi serverless-python-requirements
+npm install --save-dev serverless-dynamodb-local
+brew install virtualenv
+brew update && brew upgrade pyenv
+pyenv install 3.8.9
+pyenv virtualenv 3.8.9 zach-manno-dot-io
+# check which virtualenvs you have installed
+pyenv virtualenvs
+pyenv activate zach-manno-dot-io
+# to deactivate
+# pyenv deactivate
+pip3 install flask
+pip3 install boto3
+pip3 freeze > requirements.txt
+```
+
+# Rust Lambda API
 Followed instructions here for startup:
 
 https://github.com/awslabs/aws-lambda-rust-runtime

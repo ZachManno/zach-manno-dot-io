@@ -20,7 +20,6 @@ async fn main() -> Result<(), Error> {
 
 async fn func(event: LambdaEvent<Value>) -> Result<LambdaResponse, Error>  {
     let (event, _context) = event.into_parts();
-    //let first_name = event["firstName"].as_str().unwrap_or("world");
     let weather_api_key = env::var("API_KEY").unwrap();
     let weather_data = call_weather_api(&weather_api_key).await;
 

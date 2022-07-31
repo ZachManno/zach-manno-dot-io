@@ -10,7 +10,7 @@ exports.handler = async (event, context) => {
     "X-Custom-Header": "application/json",
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods": "GET, POST, OPTIONS, PUT, PATCH, DELETE",
-    "Access-Control-Allow-Headers": "X-Requested-With,content-type"
+    "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"
   };
 
   try {
@@ -25,6 +25,7 @@ exports.handler = async (event, context) => {
             }
           })
           .promise();
+
         body = `Deleted item ${event.pathParameters.id}`;
         break;
 //      case "GET /count/{id}":
@@ -43,7 +44,7 @@ exports.handler = async (event, context) => {
           .scan({ TableName: "zachmanno-dot-io-traffic-count" })
           .promise();
         break;
-      case "PUT /count/increment":
+      case "PUT /increment":
         let requestJSON = JSON.parse(event.body);
         console.log("Got request to put items. Id: ", requestJSON.id, "count: ", requestJSON.number)
 
@@ -69,6 +70,10 @@ exports.handler = async (event, context) => {
         }
         body = updatedCount;
         break;
+      case "OPTIONS /increment":
+      console.log("in options")
+        body = {}
+        break;
       default:
         console.log("here2")
         throw new Error(`Unsupported route: "${event.routeKey}"`);
@@ -79,7 +84,7 @@ exports.handler = async (event, context) => {
   } finally {
     body = JSON.stringify(body);
   }
-
+  console.log("Returning headers:  ", headers);
   return {
     statusCode,
     body,
