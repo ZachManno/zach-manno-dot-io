@@ -114,7 +114,10 @@ custom:
    </pre>
 ```
 
-# Serverless Framework Python Page Views API
+# Steps to Install a Serverless Framework Python API
+I started this then deleted it. But saving these steps for the future
+
+
 To install:
 ```shell
 cd zachmanno.io
@@ -134,39 +137,6 @@ pip3 install boto3
 pip3 freeze > requirements.txt
 ```
 
-# Rust Lambda API
-Followed instructions here for startup:
-
-https://github.com/awslabs/aws-lambda-rust-runtime
-
-
-To deploy:
-
-
-```shell
-cargo zigbuild --release --target aarch64-unknown-linux-gnu
-
-cp ./target/aarch64-unknown-linux-gnu/release/rust_backend_function ./build/bootstrap
-
-sam deploy --parameter-overrides WeatherApiKey=the_key
-```
-To deploy locally:
-```shell
-sam local start-api --parameter-overrides WeatherApiKey=the_key
-
-curl --request GET --url 'http://127.0.0.1:3000/weather' 
-```
-
-To test:
-```shell
-# Call directly:
-aws lambda invoke  --cli-binary-format raw-in-base64-out \
-  --function-name sam-app-HelloWorldFunction-ft3RDw5Whbua \
-  --payload '{"firstName": "Zach"}' \
-  output.json
-
-# Or call via API gateway (url is an output of sam deploy, it can change)
-curl --request GET --url 'https://ml20kezqk5.execute-api.us-east-1.amazonaws.com/weather'
-```
+# Check 'backend' folder for Serverless Rust Weather API and Node Page Views API
 
 
